@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Canciones 🎶</title>
+  <link rel="stylesheet" href="inicio.css">
+
+  <style>
+    body {
+      background: linear-gradient(180deg, #ffd6e8, #ffe6f2, #fff);
+      overflow-x: hidden;
+    }
+
+    .canciones-container {
+      padding-top: 140px;
+      max-width: 700px;
+      margin: auto;
+      display: flex;
+      flex-direction: column;
+      gap: 25px;
+    }
+
+    .song-card {
+      background: rgba(255, 255, 255, 0.65);
+      padding: 20px 25px;
+      border-radius: 18px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      box-shadow: 0 6px 18px rgba(255, 150, 190, 0.25);
+      border: 1px solid rgba(255, 170, 200, 0.35);
+      backdrop-filter: blur(5px);
+      cursor: pointer;
+      transition: transform .25s ease, box-shadow .25s ease;
+    }
+
+    .song-card:hover {
+      transform: scale(1.02);
+      box-shadow: 0 10px 25px rgba(255, 150, 190, 0.35);
+    }
+
+    .song-name {
+      font-size: 1.15em;
+      font-weight: 600;
+      color: #543d4d;
+    }
+
+    .arrow {
+      font-size: 1.3em;
+      opacity: .6;
+    }
+
+    /* ----- MODAL ----- */
+    .modal {
+      position: fixed;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      background: rgba(0,0,0,0.4);
+      display: none;
+      justify-content: center;
+      align-items: center;
+      backdrop-filter: blur(3px);
+      z-index: 999;
+    }
+
+    .modal-content {
+      background: rgba(255, 255, 255, 0.85);
+      padding: 35px;
+      width: 80%;
+      max-width: 450px;
+      border-radius: 25px;
+      text-align: center;
+      box-shadow: 0 8px 30px rgba(255, 150, 190, 0.35);
+      border: 1px solid rgba(255, 160, 190, 0.35);
+      transform: scale(0.7);
+      opacity: 0;
+      transition: 0.25s ease;
+    }
+
+    .modal.show .modal-content {
+      opacity: 1;
+      transform: scale(1);
+    }
+
+    .modal h2 {
+      margin-bottom: 15px;
+      color: #af3f72;
+    }
+
+    /* Reproductor */
+    .progress {
+      width: 100%;
+      height: 7px;
+      background: #ffd3e1;
+      border-radius: 5px;
+      margin: 12px 0;
+      cursor: pointer;
+      position: relative;
+    }
+
+    .progress-bar {
+      height: 7px;
+      width: 0%;
+      background: #ff8fb7;
+      border-radius: 5px;
+    }
+
+    .controls {
+      display: flex;
+      justify-content: center;
+      gap: 25px;
+      margin-top: 10px;
+    }
+
+    .btn {
+      font-size: 1.7em;
+      cursor: pointer;
+      opacity: 0.7;
+      transition: .2s;
+    }
+
+    .btn:hover {
+      opacity: 1;
+    }
+
+    .close-btn {
+      margin-top: 20px;
+      font-size: 1em;
+      color: #444;
+      cursor: pointer;
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- NAV -->
+  <header class="header">
+    <h1 class="titulo">Mi amor por ti 💞</h1>
+    <nav class="navbar">
+      <ul>
+        <li><a href="frases.html">Frases para ti</a></li>
+        <li><a href="recordatorios.html">Recordatorios</a></li>
+        <li><a href="album.html">Álbum</a></li>
+        <li><a href="canciones.html" class="active">Canciones</a></li>
+        <li><a href="inicio.html">Inicio</a></li>
+        <li><a href="index.html">Salir</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <!-- Canciones -->
+  <section class="canciones-container">
+
+    <div class="song-card" onclick="openModal(0)">
+      <span class="song-name">Gone Gone Gone</span>
+      <span class="arrow">❯</span>
+    </div>
+
+    <div class="song-card" onclick="openModal(1)">
+      <span class="song-name">Until I Found You</span>
+      <span class="arrow">❯</span>
+    </div>
+
+    <div class="song-card" onclick="openModal(2)">
+      <span class="song-name">La Primera Vez</span>
+      <span class="arrow">❯</span>
+    </div>
+
+    <div class="song-card" onclick="openModal(3)">
+      <span class="song-name">Las Locuras Mias</span>
+      <span class="arrow">❯</span>
+    </div>
+
+    <div class="song-card" onclick="openModal(4)">
+      <span class="song-name">Si Supieras</span>
+      <span class="arrow">❯</span>
+    </div>
+
+    <div class="song-card" onclick="openModal(5)">
+      <span class="song-name">Vamonos a Marte</span>
+      <span class="arrow">❯</span>
+    </div>
+
+    <div class="song-card" onclick="openModal(6)">
+      <span class="song-name">Happy Together</span>
+      <span class="arrow">❯</span>
+    </div>
+
+    <div class="song-card" onclick="openModal(7)">
+      <span class="song-name">Die with me</span>
+      <span class="arrow">❯</span>
+    </div>
+
+    <div class="song-card" onclick="openModal(8)">
+      <span class="song-name">The Way You Make Feel</span>
+      <span class="arrow">❯</span>
+    </div>
+
+
+    <div class="song-card" onclick="openModal(9)">
+      <span class="song-name">Grenade</span>
+      <span class="arrow">❯</span>
+    </div>
+
+    <div class="song-card" onclick="openModal(10)">
+      <span class="song-name">I Wanna Be Yours</span>
+      <span class="arrow">❯</span>
+    </div>
+  </section>
+
+  <!-- Modal -->
+  <div class="modal" id="modal">
+    <div class="modal-content" id="modalContent">
+      <h2 id="modalSongTitle"></h2>
+
+      <audio id="audioPlayer"></audio>
+
+      <div class="progress" onclick="seek(event)">
+        <div class="progress-bar" id="progressBar"></div>
+      </div>
+
+      <div class="controls">
+        <span class="btn" onclick="previousSong()">⏮️</span>
+        <span class="btn" onclick="togglePlay()" id="playBtn">⏯️</span>
+        <span class="btn" onclick="nextSong()">⏭️</span>
+      </div>
+
+      <div class="close-btn" onclick="closeModal()">Cerrar ✖</div>
+    </div>
+  </div>
+
+  <script>
+    const songs = [
+      { title: "Gone Gone Gone", file: "gone.mp3" },
+      { title: "Until I Found You", file: "until.mp3" },
+      { title: "La Primera Vez", file: "primera.mp3" },
+      { title: "Las Locuras Mias", file: "locuras.mp3" },
+      { title: "Si Supieras", file: "supieras.mp3"},
+      { title: "Vamonos a Marte", file: "marte.mp3"},
+      { title: "Happy Together", file: "happy.mp3"},
+      { title: "Die With Me", file: "die.mp3"},
+      { title: "The Way You Make Feel", file: "make.mp3"},
+      { title: "Grenade", file: "grenade.mp3"},
+      { title: "I Wanna Be Yours", file: "wanna.mp3"}
+    ];
+
+    let currentSong = 0;
+    const modal = document.getElementById("modal");
+    const audio = document.getElementById("audioPlayer");
+    const bar = document.getElementById("progressBar");
+
+    function openModal(index) {
+      currentSong = index;
+
+      document.getElementById("modalSongTitle").textContent = songs[index].title;
+      audio.src = songs[index].file;
+      audio.play();
+
+      modal.style.display = "flex";
+      setTimeout(() => modal.classList.add("show"), 20);
+    }
+
+    function closeModal() {
+      modal.classList.remove("show");
+      audio.pause();
+
+      setTimeout(() => modal.style.display = "none", 250);
+    }
+
+    function togglePlay() {
+      if (audio.paused) audio.play();
+      else audio.pause();
+    }
+
+    function nextSong() {
+      currentSong = (currentSong + 1) % songs.length;
+      openModal(currentSong);
+    }
+
+    function previousSong() {
+      currentSong = (currentSong - 1 + songs.length) % songs.length;
+      openModal(currentSong);
+    }
+
+    audio.addEventListener("timeupdate", () => {
+      const porcentaje = (audio.currentTime / audio.duration) * 100;
+      bar.style.width = porcentaje + "%";
+    });
+
+    function seek(event) {
+      const total = event.currentTarget.clientWidth;
+      const clickX = event.offsetX;
+      audio.currentTime = (clickX / total) * audio.duration;
+    }
+
+    audio.addEventListener("error", () => {
+  alert("No se pudo cargar el audio: " + audio.src);
+});
+
+  </script>
+
+</body>
+</html>

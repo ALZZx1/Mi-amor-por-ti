@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Mis Fotos 📷</title>
+<link rel="stylesheet" href="inicio.css">
+
+<style>
+    body {
+        background: linear-gradient(180deg, #ffd6e8, #ffe6f2, #fff);
+        overflow-x: hidden;
+        margin: 0;
+        padding: 0;
+        font-family: Arial, sans-serif;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    h1 {
+        margin-top: 30px;
+        color: #c94d74;
+        font-size: 2.2em;
+    }
+
+    /* CONTENEDOR DE LAS FOTOS */
+    .gallery {
+        margin-top: 30px;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 25px;
+        width: 90%;
+        max-width: 1100px;
+    }
+
+    /* TARJETAS TIPO POLAROID */
+    .polaroid {
+        background: white;
+        width: 220px;
+        padding: 12px 12px 25px 12px;
+        border-radius: 10px;
+        box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+        text-align: center;
+        transition: 0.25s;
+    }
+
+    .polaroid:hover {
+        transform: scale(1.05) rotate(-2deg);
+    }
+
+    .polaroid img {
+        width: 100%;
+        height: 250px;
+        object-fit: cover;
+        border-radius: 7px;
+    }
+
+    .caption {
+        margin-top: 10px;
+        font-size: 1em;
+        font-weight: bold;
+        color: #7b3a57;
+    }
+</style>
+
+</head>
+<body>
+      <header class="header">
+    <h1 class="titulo">Mi amor por ti 💞</h1>
+    <nav class="navbar">
+      <ul>
+        <li><a href="frases.html">Frases para ti</a></li>
+        <li><a href="recordatorios.html">Recordatorios</a></li>
+        <li><a href="album.html" class="active">Álbum</a></li>
+        <li><a href="canciones.html">Canciones</a></li>
+        <li><a href="inicio.html">Inicio</a></li>
+        <li><a href="index.html">Salir</a></li>
+      </ul>
+    </nav>
+  </header>
+
+<h1>📷 Mis Fotitos Contigo 💕</h1>
+
+<div class="gallery">
+
+    <!-- FOTO 2 -->
+    <div class="polaroid">
+        <img src="foto2.jpg">
+        <div class="caption">Un día especial ✨</div>
+    </div>
+
+    <!-- FOTO 3 -->
+    <div class="polaroid">
+        <img src="foto3.jpg">
+        <div class="caption">Nosotros 💗</div>
+    </div>
+
+    <!-- FOTO 4 -->
+    <div class="polaroid">
+        <img src="foto4.jpg">
+        <div class="caption">Comprometidos 💞</div>
+    </div>
+
+    <!-- FOTO 5 -->
+    <div class="polaroid">
+        <img src="foto5.jpg">
+        <div class="caption">Twinss 🫶</div>
+    </div>
+
+    <div class="polaroid">
+        <img src="foto6.jpg">
+        <div class="caption">Comodidad full 💞</div>
+    </div>
+
+    <div class="polaroid">
+        <img src="foto7.jpg">
+        <div class="caption">Ultima Cita 💞</div>
+    </div>
+
+</div>
+
+</body>
+</html>

@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Frases para ti 💖</title>
+  <link rel="stylesheet" href="inicio.css">
+  <style>
+    body {
+     
+      background: linear-gradient(180deg, #ffd6e8, #ffe6f2, #fff);
+      overflow-x: hidden;
+    }
+
+    .frases-random {
+      position: relative;
+      z-index: 5;
+      width: 100%;
+      height: 100vh;
+      padding-top: 120px;
+      animation: fadeIn 1.5s ease-in;
+    }
+
+    .frase {
+      position: absolute;
+      background: rgba(255, 255, 255, 0.65);
+      border-radius: 20px;
+      padding: 10px 20px;
+      max-width: 280px;
+      box-shadow: 0 4px 20px rgba(255, 192, 203, 0.3);
+      border: 1px solid rgba(255, 180, 200, 0.4);
+      font-size: 1.1em;
+      line-height: 1.4;
+      color: #4b3b3b;
+      text-align: center;
+      backdrop-filter: blur(8px);
+      opacity: 0.95;
+      transition: transform 0.3s ease;
+    }
+
+    .frase:hover {
+      transform: scale(1.05);
+      box-shadow: 0 6px 25px rgba(255, 170, 190, 0.4);
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Barra de navegación -->
+  <header class="header">
+    <h1 class="titulo">Mi amor por ti 💞</h1>
+    <nav class="navbar">
+      <ul>
+        <li><a href="frases.html" class="active">Frases para ti</a></li>
+        <li><a href="recordatorios.html">Recordatorios</a></li>
+        <li><a href="album.html">Álbum</a></li>
+        <li><a href="canciones.html">Canciones</a></li>
+        <li><a href="inicio.html">Inicio</a></li>
+        <li><a href="index.html">Salir</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <!-- Contenedor de frases -->
+  <div class="frases-random" id="frases-container"></div>
+
+  <script>
+    const frases = [
+      " Eres la razón por la que sonrío.",
+      " Tu sonrisa ilumina mis días más grises.",
+      " Te pienso en cada silencio, te siento en cada respiro.",
+      " Tu eres mi notificacion favorita.",
+      " Eres mi camino a seguir del cual no me canso.",
+      " Desde que llegaste, todo se volvio maravilloso.",
+      " No sé qué hice para merecerte, pero gracias por existir.",
+      " Amarte es la mejor decision de mi vida.",
+      " Eres mi mundo.",
+      " Eres la unica constante que quiero en mi vida.",
+      " No hay distancia que apague lo que siento por ti.",
+      " Te amo no solo por lo que eres, sino por lo que soy cuando estoy contigo.",
+      " Tu mirada tiene la paz que mi alma necesita.",
+      " Estar contigo es como vivir en un sueño del que no quiero despertar.",
+      " Contigo aprendí lo que realmente significa amar.",
+      " Saber que estas en mi vida hace todo mas sencillo de enfrentar.",
+      " Te amo mas que ayer pero no tanto como te amare mañana.",
+      " Eres mi primer pensamiento al despertar y mi ultimo pensamiento antes de dormir.",
+      " No hay ningun motivo que me haga dejar de amarte.",
+      " Nunca pienses que no te amo, porque cada dia me esfuerzo por amarte mas.",
+      " Eres mi princesa que no esta en un cuento de hadas pero si en mi cuento de hadas.",
+      " Eres mi persona favorita."
+    ];
+
+    const container = document.getElementById("frases-container");
+    const frasesObjs = [];
+
+    // Crear frases con posiciones y velocidades aleatorias
+    frases.forEach((texto) => {
+      const frase = document.createElement("div");
+      frase.classList.add("frase");
+      frase.innerHTML = texto;
+
+      const x = Math.random() * (window.innerWidth - 300);
+      const y = Math.random() * (window.innerHeight - 200) + 100;
+      frase.style.left = `${x}px`;
+      frase.style.top = `${y}px`;
+
+      container.appendChild(frase);
+
+      frasesObjs.push({
+        el: frase,
+        x,
+        y,
+        vx: (Math.random() - 0.5) * 1.6, // 🌟 velocidad más rápida y fluida
+        vy: (Math.random() - 0.5) * 1.6
+      });
+    });
+
+    // 🌠 Animación fluida y rebote en bordes
+    function moverFrases() {
+      const width = window.innerWidth;
+      const height = window.innerHeight;
+
+      frasesObjs.forEach((f) => {
+        f.x += f.vx;
+        f.y += f.vy;
+
+        // Rebote en los bordes
+        if (f.x <= 0 || f.x >= width - 300) f.vx *= -1;
+        if (f.y <= 80 || f.y >= height - 100) f.vy *= -1;
+
+        f.el.style.left = `${f.x}px`;
+        f.el.style.top = `${f.y}px`;
+      });
+
+      requestAnimationFrame(moverFrases);
+    }
+
+    moverFrases();
+  </script>
+</body>
+</html>
